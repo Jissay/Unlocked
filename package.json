@@ -1,0 +1,25 @@
+{
+  "name": "unlocked",
+  "version": "0.1.0",
+  "description": "Unlocked project - Game library management, backlog clearing and game discovering",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "lint": "tslint -c tslint.json -p tsconfig.json",
+    "start": "npm run build && electron ./dist/Main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jissay/Unlocked.git"
+  },
+  "author": "Jissay",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jissay/Unlocked/issues"
+  },
+  "homepage": "https://github.com/Jissay/Unlocked#readme",
+  "dependencies": {
+    "electron": "^7.1.3",
+    "typescript": "^3.7.3"
+  }
+}

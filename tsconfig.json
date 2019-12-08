@@ -1,0 +1,12 @@
+/* SEE https://medium.com/@davembush/typescript-and-electron-the-right-way-141c2e15e4e1 */
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": { "*": ["node_modules/*"] }
+  },
+  "include": [ "src/**/*" ]
+}

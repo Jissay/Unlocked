@@ -1,5 +1,6 @@
 package com.jissay.unlocked
 
+import org.junit.Assert
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
 
@@ -7,7 +8,9 @@ import org.springframework.boot.test.context.SpringBootTest
 class UnlockedServerApplicationTests {
 
 	@Test
-	fun contextLoads() {
+	fun sample()
+	{
+		System.out.println("--------------------------------- TEST SAMPLE ---------------------------------");
+		Assert.assertEquals(true, true);
 	}
-
 }

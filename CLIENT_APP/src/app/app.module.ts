@@ -3,6 +3,7 @@ import '../polyfills';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgxsModule } from '@ngxs/store';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
@@ -33,6 +34,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     SharedModule,
     HomeModule,
     AppRoutingModule,
+    NgxsModule.forRoot([]),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

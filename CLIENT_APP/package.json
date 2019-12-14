@@ -90,6 +90,7 @@
     "node": ">=10.9.0"
   },
   "dependencies": {
-    "@ngrx/store": "^8.5.2"
+    "@ngrx/store": "^8.5.2",
+    "@ngxs/store": "^3.6.0"
   }
 }

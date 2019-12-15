@@ -6,6 +6,8 @@ version: 2
 jobs:
   build:
     docker:
+      working_directory: ~/JISSAY_REP/SERVER_APP
+
       # specify the version you desire here
       - image: circleci/openjdk:8-jdk
 
@@ -23,21 +25,20 @@ jobs:
       - add_ssh_keys:
           fingerprints: 
             - "b6:b6:5e:41:12:41:d5:f7:8b:a9:ce:15:45:33:42:b0"
-      - checkout
+      - checkout:
+          path: ~/JISSAY_REP/
 
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "~/project/SERVER_APP/build.gradle.kts" }}
+            - v1-dependencies-{{ checksum "build.gradle.kts" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
       - run: gradle dependencies
 
       - save_cache:
-          paths:
-            - ~/project/SERVER_APP/.gradle
-          key: v1-dependencies-{{ checksum "~/project/SERVER_APP/build.gradle.kts" }}
+          key: v1-dependencies-{{ checksum "build.gradle.kts" }}
 
       # run tests!
       - run: gradle test

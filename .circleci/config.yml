@@ -6,7 +6,7 @@ version: 2
 jobs:
   build:
     working_directory: ~/JISSAY_REP/SERVER_APP
-    
+
     docker:
 
       # specify the version you desire here
@@ -37,9 +37,6 @@ jobs:
             - v1-dependencies-
 
       - run: gradle dependencies
-
-      - save_cache:
-          key: v1-dependencies-{{ checksum "build.gradle.kts" }}
 
       # run tests!
       - run: gradle test

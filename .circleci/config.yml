@@ -5,8 +5,9 @@
 version: 2
 jobs:
   build:
+    working_directory: ~/JISSAY_REP/SERVER_APP
+    
     docker:
-      working_directory: ~/JISSAY_REP/SERVER_APP
 
       # specify the version you desire here
       - image: circleci/openjdk:8-jdk

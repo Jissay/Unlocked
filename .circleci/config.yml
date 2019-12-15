@@ -19,7 +19,7 @@ jobs:
       JVM_OPTS: -Xmx3200m
       TERM: dumb
 
-    working_directory: ~/SERVER_APP
+    working_directory: ~/repo/SERVER_APP
 
     steps:
       - add_ssh_keys:

@@ -19,8 +19,6 @@ jobs:
       JVM_OPTS: -Xmx3200m
       TERM: dumb
 
-    working_directory: ~/repo/SERVER_APP
-
     steps:
       - add_ssh_keys:
           fingerprints: 
@@ -30,7 +28,7 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "build.gradle.kts" }}
+            - v1-dependencies-{{ checksum "~/SERVER_APP/build.gradle.kts" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
@@ -38,8 +36,8 @@ jobs:
 
       - save_cache:
           paths:
-            - ~/.gradle
-          key: v1-dependencies-{{ checksum "build.gradle.kts" }}
+            - ~/SERVER_APP/.gradle
+          key: v1-dependencies-{{ checksum "~/SERVER_APP/build.gradle.kts" }}
 
       # run tests!
       - run: gradle test

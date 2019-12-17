@@ -16,6 +16,10 @@ jobs:
 
     working_directory: ~/repo
 
+    dependencies:
+      pre:
+        - npm install -g angular-cli
+
     steps:
       - checkout
 

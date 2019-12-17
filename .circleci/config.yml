@@ -22,9 +22,6 @@ jobs:
     steps:
       - checkout
 
-      # install angular cli
-      - run: npm install -g angular-cli
-
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -40,4 +37,4 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: ng test
+      - run: node_modules/@angular/cli/bin/ng test

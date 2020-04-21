@@ -10,15 +10,13 @@ jobs:
 
     working_directory: ~/JISSAY_REP
 
-    dependencies:
-      pre:
-
     steps:
       - checkout:
           path: ~/JISSAY_REP/
 
       # Perform build
       - run: npm install
+      - run: ng build
       # Save build and node modules to cache
       - save_cache:
           paths:
@@ -35,6 +33,7 @@ jobs:
             at: .
 
         # run tests!
+        - run: npm install
         - run: node_modules/@angular/cli/bin/ng test
 
         - store_test_results:

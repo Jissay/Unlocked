@@ -8,7 +8,7 @@ jobs:
     docker:
       - image: circleci/node:13.3.0-browsers
 
-    working_directory: ~/repo
+    working_directory: ~/JISSAY_REP
 
     dependencies:
       pre:

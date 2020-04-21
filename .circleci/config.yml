@@ -28,9 +28,8 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
   test:
-
     docker:
-    - image: circleci/node:13.3.0-browsers
+      - image: circleci/node:13.3.0-browsers
 
     steps:
       - checkout

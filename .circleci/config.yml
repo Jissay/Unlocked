@@ -8,17 +8,15 @@ jobs:
     docker:
       - image: circleci/node:13.3.0-browsers
 
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-
     working_directory: ~/repo
 
     dependencies:
       pre:
 
     steps:
+      - checkout:
+          path: ~/JISSAY_REP/
+
       # Perform build
       - run: npm install
       # Save build and node modules to cache
@@ -28,25 +26,25 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
   test:
-    docker:
-      - image: circleci/node:13.3.0-browsers
+      docker:
+        - image: circleci/node:13.3.0-browsers
 
-    steps:
-      - checkout
-      - attach_workspace:
-        at: .
+      steps:
+        - checkout
+        - attach_workspace:
+            at: .
 
-      # run tests!
-      - run: node_modules/@angular/cli/bin/ng test
+        # run tests!
+        - run: node_modules/@angular/cli/bin/ng test
 
-      - store_test_results:
-          path: test
+        - store_test_results:
+            path: test
 
-  workflows:
-    version: 2
-    build_and_test:
-      jobs:
-        - build
-        - test:
-            requires:
-              - build
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build

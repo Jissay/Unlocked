@@ -16,7 +16,7 @@ jobs:
 
       # Perform build
       - run: npm install
-      - run: ng build
+      - run: node_modules/@angular/cli/bin/ng build
       # Save build and node modules to cache
       - save_cache:
           paths:

@@ -6,7 +6,6 @@ version: 2
 jobs:
   build:
     docker:
-      # specify the version you desire here
       - image: circleci/node:13.3.0-browsers
 
       # Specify service dependencies here if necessary
@@ -20,21 +19,35 @@ jobs:
       pre:
 
     steps:
-      - checkout
-
-      # Download and cache dependencies
-      #- restore_cache:
-      #    keys:
-      #      - v1-dependencies-{{ checksum "package.json" }}
-      #      # fallback to using the latest cache if no exact match is found
-      #      - v1-dependencies-
-
+      # Perform build
       - run: npm install
-
+      # Save build and node modules to cache
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
+  test:
+
+    docker:
+    - image: circleci/node:13.3.0-browsers
+
+    steps:
+      - checkout
+      - attach_workspace:
+        at: .
+
       # run tests!
       - run: node_modules/@angular/cli/bin/ng test
+
+      - store_test_results:
+          path: test
+
+  workflows:
+    version: 2
+    build_and_test:
+      jobs:
+        - build
+        - test:
+            requires:
+              - build

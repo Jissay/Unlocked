@@ -15,8 +15,14 @@ jobs:
           path: ~/JISSAY_REP/
 
       # Perform build
-      - run: npm install
-      - run: node_modules/@angular/cli/bin/ng build
+      - run:
+          name: Install node modules
+          command: npm install
+
+      - run:
+          name: Build project
+          command: node_modules/@angular/cli/bin/ng build
+          
       # Save build and node modules to cache
       - save_cache:
           paths:
@@ -37,7 +43,7 @@ jobs:
         - run: node_modules/@angular/cli/bin/ng test
 
         - store_test_results:
-            path: test
+            path: src/test
 
 workflows:
   version: 2
